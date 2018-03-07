@@ -1,0 +1,41 @@
+.tab-container {
+  flex: 1;
+  margin: 5px;
+  display: flex;
+  border-radius: 3px;
+  flex-direction: column;
+  background-color: #fff;
+  box-shadow: 0px 0px 5px #ccc;
+}
+
+.tab-header-container {
+  flex: 1;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  align-items: center;
+  border-bottom: 2px solid #fafafa;
+}
+
+.tab-item {
+  padding: 13px 10px 10px 10px;
+  min-width: 100px;
+  text-align: center;
+  border-bottom: 3px solid transparent;
+}
+
+.tab-item a {
+  color: #777;
+  text-decoration: none;
+}
+
+.tab-item.tab-item-seleted {
+  border-bottom: 3px solid #ddd;
+}
+
+.tab-item.tab-item-seleted a {
+  color: #000;
+  font-weight: bold;
+}
