@@ -5,14 +5,14 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 import Lang from "./containers/Lang";
 import Tabs from "./containers/Tabs";
+import "./styles/main.css";
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
         <Router>
-          <div>
-            <Lang />
+          <div className="full-flex">
             <Tabs />
           </div>
         </Router>
