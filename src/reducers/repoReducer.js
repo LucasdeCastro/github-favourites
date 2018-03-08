@@ -1,4 +1,8 @@
-import { FETCH_DATA_SUCCESS, FETCH_DATA } from "../utils/actions";
+import {
+  FETCH_REPO_DATA_SUCCESS,
+  FETCH_REPO_PAGE_SUCCESS,
+  FETCH_REPO_DATA
+} from "../utils/actions";
 
 const initialState = {
   page: 1,
@@ -9,15 +13,23 @@ const initialState = {
 
 export default function langReducer(state = initialState, { type, payload }) {
   switch (type) {
-    case FETCH_DATA:
+    case FETCH_REPO_DATA:
       return Object.assign({}, state, {
         loading: true
       });
-    case FETCH_DATA_SUCCESS:
+    case FETCH_REPO_DATA_SUCCESS:
       return Object.assign({}, state, {
-        data: state.data.concat(payload.items),
+        loading: false,
+        page: ++payload.page,
         total: payload.total_count,
-        loading: false
+        data: [].concat(payload.items)
+      });
+    case FETCH_REPO_PAGE_SUCCESS:
+      return Object.assign({}, state, {
+        loading: false,
+        page: ++payload.page,
+        total: payload.total_count,
+        data: state.data.concat(payload.items)
       });
     default:
       return state;
