@@ -1,0 +1,39 @@
+.lang-add {
+  flex-basis: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.lang-add .lang-input {
+  padding: 6px 12px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  border-bottom: 1px solid #ccc;
+}
+
+.lang-add .add-button {
+  margin: 10px;
+  font-size: 12px;
+  color: #24292e;
+  padding: 3px 10px;
+  line-height: 20px;
+  border-radius: 3px;
+  background-color: #eff3f6;
+  background-image: linear-gradient(-180deg, #fafbfc 0%, #eff3f6 90%);
+}
+
+.lang-add .add-button:active {
+  background-color: #e9ecef;
+  background-image: none;
+  border-color: rgba(27, 31, 35, 0.35);
+  box-shadow: inset 0 0.15em 0.3em rgba(27, 31, 35, 0.15);
+}
+
+.lang-add .add-button:hover {
+  background-color: #e6ebf1;
+  background-image: linear-gradient(-180deg, #f0f3f6 0%, #e6ebf1 90%);
+  background-position: -0.5em;
+  border-color: rgba(27, 31, 35, 0.35);
+}

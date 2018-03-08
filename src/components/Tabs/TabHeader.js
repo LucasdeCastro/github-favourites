@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/tabs.css";
+import Button from "../Button";
 
 export const TabItem = ({ title, onClick, index, selected }) => (
   <li className={`tab-item${selected ? " tab-item-seleted" : ""}`}>

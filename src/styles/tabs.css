@@ -1,6 +1,6 @@
 .tab-container {
   flex: 1;
-  margin: 5px;
+  margin: 25px;
   display: flex;
   border-radius: 3px;
   flex-direction: column;
@@ -8,19 +8,25 @@
   box-shadow: 0px 0px 5px #ccc;
 }
 
+.tab-header {
+  display: flex;
+  min-height: 50px;
+  flex-direction: row;
+  border-bottom: 1px solid #ddd;
+}
+
 .tab-header-container {
-  flex: 1;
+  flex-basis: 10;
   margin: 0px;
   padding: 0px;
   display: flex;
   flex-wrap: wrap;
   list-style: none;
   align-items: center;
-  border-bottom: 2px solid #fafafa;
 }
 
 .tab-item {
-  padding: 13px 10px 10px 10px;
+  padding: 14px 10px 14px 10px;
   min-width: 100px;
   text-align: center;
   border-bottom: 3px solid transparent;

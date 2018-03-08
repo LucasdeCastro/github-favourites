@@ -5,6 +5,7 @@ import { addLang, selectLang } from "../actions/langActions";
 
 import "../styles/tabs.css";
 import Repo from "./Repo";
+import Lang from "./Lang";
 import Button from "../components/Button";
 import TabHeader from "../components/Tabs/TabHeader";
 
@@ -13,21 +14,23 @@ class LangContainer extends React.Component {
     this.input = e;
   };
 
-  addLang = () => {
-    if (this.input.value.trim() !== "") {
-      this.props.addLang(this.input.value);
-      this.input.value = "";
-    }
-  };
-
   selectLang = title => this.props.selectLang(title);
 
   render() {
     const { lang: { data, selected } } = this.props;
     return (
       <div className="tab-container">
-        <TabHeader data={data} selected={selected} onClick={this.selectLang} />
-        <Route forceRefresh={true} component={Repo} path="/repo/:id" />
+        <div className="tab-header">
+          <TabHeader
+            data={data}
+            selected={selected}
+            onClick={this.selectLang}
+          />
+
+          <Lang />
+        </div>
+
+        <Route path="/repo/:id" component={Repo} forceRefresh={true} />
       </div>
     );
   }
