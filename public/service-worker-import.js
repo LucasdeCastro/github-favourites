@@ -2,7 +2,7 @@
 const doCache = false;
 
 // Name our cache
-const CACHE_NAME = "my-pwa-cache-v1";
+const CACHE_NAME = "GITHUB-API-CACHE-V1";
 const baseCache = ["/", "index.html", "/dist/app.bundle.js"];
 // Delete old caches that are not our current one!
 self.addEventListener("activate", event => {
