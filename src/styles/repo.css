@@ -36,7 +36,12 @@
   border-radius: 5px;
 }
 
+.repo-card-title {
+  display: flex;
+}
+
 .repo-card-container .repo-card-title a.repo-card-link {
+  flex: 1;
   color: #0366d6;
   font-weight: 600;
   font-size: 20px;
@@ -46,4 +51,16 @@
 .repo-card-container .repo-card-title a.repo-card-link span {
   font-weight: normal;
   font-weight: 400;
+}
+
+.repo-card-favorite {
+  cursor: pointer;
+  display: flex;
+  color: #24292e;
+  padding: 5px 10px;
+  border-radius: 5px;
+  align-items: center;
+  align-self: flex-end;
+  justify-content: center;
+  background-image: linear-gradient(-180deg, #fafbfc 0%, #eff3f6 90%);
 }

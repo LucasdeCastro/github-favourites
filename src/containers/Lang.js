@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Button from "../components/Button";
+import { withRouter } from "react-router-dom";
 import { addLang } from "../actions/langActions";
 
 import "../styles/lang.css";
@@ -11,56 +12,58 @@ class LangContainer extends React.Component {
     this.input = e;
   };
 
-  showInput = _ => this.setState({ show: !this.state.show });
+  toggleInput = _ => this.setState({ show: !this.state.show });
 
   addLang = () => {
     const value = this.input.value.trim();
-    const { data } = this.props.lang;
+    const { data, selected } = this.props.lang;
 
     if (data.find(e => e === value)) console.log("Essa linguagem já foi salva");
     else if (value !== "") {
       this.props.addLang(this.input.value);
       this.input.value = "";
       this.setState({ show: false });
+
+      if (!selected) this.props.history.push(`/repo/${value}`);
     }
   };
 
-  onEnter = e => e.key === "Enter" && this.addLang();
+  onEnter = e => {
+    if (e.keyCode === 13) this.addLang();
+    else if (e.keyCode === 27) this.toggleInput();
+  };
 
   render() {
     const { show } = this.state;
-
     return (
       <div className="lang-add">
         {show && (
           <div>
             <input
               ref={this.setInput}
-              onKeyPress={this.onEnter}
+              onKeyDown={this.onEnter}
               className={"lang-input"}
               placeholder={"Digite a linguagem"}
             />
             <Button.Icon
-              text={""}
               iconName="FaCheck"
               className="add-button-icon"
               onClick={this.addLang}
             />
             <Button.Icon
-              text={""}
               iconName="FaClose"
               className="add-button-icon"
-              onClick={this.showInput}
+              onClick={this.toggleInput}
             />
           </div>
         )}
 
         {!show && (
           <Button.Icon
-            text={"add"}
+            text={"Add"}
             iconName="FaPlus"
             className="add-button"
-            onClick={this.showInput}
+            onClick={this.toggleInput}
           />
         )}
       </div>
@@ -70,4 +73,6 @@ class LangContainer extends React.Component {
 
 const mapProps = ({ lang }) => ({ lang });
 
-export default connect(mapProps, { addLang })(LangContainer);
+const connected = connect(mapProps, { addLang })(LangContainer);
+
+export default withRouter(connected);
