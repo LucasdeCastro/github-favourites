@@ -17,7 +17,7 @@ class LangContainer extends React.Component {
     const value = this.input.value.trim();
     const { data } = this.props.lang;
 
-    if (data.find(e => e == value)) console.log("Essa linguagem já foi salva");
+    if (data.find(e => e === value)) console.log("Essa linguagem já foi salva");
     else if (value !== "") {
       this.props.addLang(this.input.value);
       this.input.value = "";
@@ -28,7 +28,6 @@ class LangContainer extends React.Component {
   onEnter = e => e.key === "Enter" && this.addLang();
 
   render() {
-    const { lang: { data, selected } } = this.props;
     const { show } = this.state;
 
     return (

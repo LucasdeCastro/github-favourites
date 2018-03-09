@@ -1,12 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Route, Link, withRouter } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import { addLang, selectLang } from "../actions/langActions";
 
 import "../styles/tabs.css";
 import Repo from "./Repo";
 import Lang from "./Lang";
-import Button from "../components/Button";
 import TabHeader from "../components/Tabs/TabHeader";
 
 class LangContainer extends React.Component {

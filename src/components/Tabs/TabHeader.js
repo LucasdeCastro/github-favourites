@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/tabs.css";
-import Button from "../Button";
 
 export const TabItem = ({ title, onClick, index, selected }) => (
   <li className={`tab-item${selected ? " tab-item-seleted" : ""}`}>
@@ -19,7 +18,7 @@ export default ({ data, selected, onClick }) => (
         title={title}
         index={index}
         onClick={onClick}
-        selected={title == selected}
+        selected={title === selected}
       />
     ))}
   </ul>

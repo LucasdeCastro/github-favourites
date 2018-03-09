@@ -10,7 +10,7 @@ export default function langReducer(state = initialState, { type, payload }) {
     case SET_LANG:
       return Object.assign({}, state, {
         data: state.data.concat(payload),
-        selected: state.selected == null ? state.data[0] : state.selected
+        selected: state.selected === null ? state.data[0] : state.selected
       });
     case SELECT_LANG:
       return Object.assign({}, state, {

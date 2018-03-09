@@ -4,7 +4,7 @@ import * as FontAwesome from "react-icons/lib/fa";
 
 export default class Card extends React.PureComponent {
   render() {
-    const { item, key, style } = this.props;
+    const { item, style } = this.props;
     if (!item) return null;
 
     return (
@@ -29,7 +29,12 @@ export default class Card extends React.PureComponent {
             {item.forks_count}
           </div>
           <div className="footer-label">
-            <img src={item.owner.avatar_url} width={20} height={20} />
+            <img
+              src={item.owner.avatar_url}
+              width={20}
+              height={20}
+              alt="Owner"
+            />
             {item.owner.login}
           </div>
         </div>

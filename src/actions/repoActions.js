@@ -10,12 +10,18 @@ export function fetchRepo(lang, page) {
   return dispatch => {
     dispatch({ type: FETCH_REPO_DATA });
 
-    const type = page == 1 ? FETCH_REPO_DATA_SUCCESS : FETCH_REPO_PAGE_SUCCESS;
+    const type = page === 1 ? FETCH_REPO_DATA_SUCCESS : FETCH_REPO_PAGE_SUCCESS;
 
     fetch(`${BASE_URL}${lang}&page=${page}`)
       .then(e => e.json())
       .then(response => {
         dispatch({ type, payload: { ...response, page } });
+      })
+      .catch(error => {
+        dispatch({
+          type: FETCH_REPO_DATA_FAIL,
+          payload: { error: "Request fail" }
+        });
       });
   };
 }
