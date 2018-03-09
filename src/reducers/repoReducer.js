@@ -1,4 +1,5 @@
 import {
+  FETCH_REPO_DATA_FAIL,
   FETCH_REPO_DATA_SUCCESS,
   FETCH_REPO_PAGE_SUCCESS,
   FETCH_REPO_DATA
@@ -30,6 +31,10 @@ export default function langReducer(state = initialState, { type, payload }) {
         page: ++payload.page,
         total: payload.total_count,
         data: state.data.concat(payload.items)
+      });
+    case FETCH_REPO_DATA_FAIL:
+      return Object.assign({}, state, {
+        loading: false
       });
     default:
       return state;
