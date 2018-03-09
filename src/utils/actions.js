@@ -1,4 +1,5 @@
 export const SET_LANG = "SET_LANG";
+export const REMOVE_LANG = "REMOVE_LANG";
 export const SELECT_LANG = "SELECT_LANG";
 
 export const FETCH_REPO_DATA = "FETCH_REPO_DATA";
