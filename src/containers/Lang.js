@@ -21,11 +21,11 @@ class LangContainer extends React.Component {
     else if (value !== "") {
       this.props.addLang(this.input.value);
       this.input.value = "";
+      this.setState({ show: false });
     }
   };
 
-  onBlur = () => this.addLang();
-  onEnter = () => this.addLang();
+  onEnter = e => e.key === "Enter" && this.addLang();
 
   render() {
     const { lang: { data, selected } } = this.props;
@@ -34,13 +34,26 @@ class LangContainer extends React.Component {
     return (
       <div className="lang-add">
         {show && (
-          <input
-            ref={this.setInput}
-            onBlur={this.onBlur}
-            onKeyPress={this.onEnter}
-            className={"lang-input"}
-            placeholder={"Digite a linguagem"}
-          />
+          <div>
+            <input
+              ref={this.setInput}
+              onKeyPress={this.onEnter}
+              className={"lang-input"}
+              placeholder={"Digite a linguagem"}
+            />
+            <Button.Icon
+              text={""}
+              iconName="FaCheck"
+              className="add-button-icon"
+              onClick={this.addLang}
+            />
+            <Button.Icon
+              text={""}
+              iconName="FaClose"
+              className="add-button-icon"
+              onClick={this.showInput}
+            />
+          </div>
         )}
 
         {!show && (

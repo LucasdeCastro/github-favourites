@@ -1,7 +1,7 @@
 import { SET_LANG, SELECT_LANG } from "../utils/actions";
 
 const initialState = {
-  data: ["Java", "JavaScript", "Python", "PHP"],
+  data: [],
   selected: null
 };
 
@@ -13,7 +13,6 @@ export default function langReducer(state = initialState, { type, payload }) {
         selected: state.selected == null ? state.data[0] : state.selected
       });
     case SELECT_LANG:
-      console.log(SELECT_LANG, payload);
       return Object.assign({}, state, {
         selected: payload
       });
