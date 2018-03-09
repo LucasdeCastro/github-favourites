@@ -6,17 +6,20 @@ import { fetchRepo } from "../actions/repoActions";
 import { selectLang } from "../actions/langActions";
 
 import ListView from "../components/ListView";
-import { GITHUB_API_KEY } from "../utils/constants";
 import Card from "../components/Repo/Card";
 
 class Repo extends React.Component {
   componentDidMount() {
     this.height = this.el.clientHeight;
     const {
+      history,
       repo: { page },
-      lang: { selected },
+      lang: { selected, data },
       match: { params: { id } }
     } = this.props;
+
+    if (!selected || !data.find(e => selected === e))
+      history.replace({ pathname: "/" });
 
     if (selected !== id) this.props.selectLang(id);
     this.props.fetchRepo(id, page);
