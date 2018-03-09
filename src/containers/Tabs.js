@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Route, withRouter } from "react-router-dom";
-import { addLang, selectLang } from "../actions/langActions";
+import { addLang, selectLang, removeLang } from "../actions/langActions";
 
 import "../styles/tabs.css";
 import Repo from "./Repo";
@@ -15,6 +15,26 @@ class LangContainer extends React.Component {
 
   selectLang = title => this.props.selectLang(title);
 
+  componentDidUpdate() {
+    this.redirectToRepo();
+  }
+
+  componentDidMount() {
+    this.redirectToRepo();
+  }
+
+  redirectToRepo = () => {
+    const {
+      lang: { selected },
+      history: { location: { pathname } }
+    } = this.props;
+
+    if (selected && selected.length > 0 && pathname === "/")
+      this.props.history.push(`/repo/${selected}`);
+  };
+
+  removeLang = lang => this.props.removeLang(lang);
+
   render() {
     const { lang: { data, selected } } = this.props;
     return (
@@ -24,6 +44,7 @@ class LangContainer extends React.Component {
             data={data}
             selected={selected}
             onClick={this.selectLang}
+            langRemove={this.removeLang}
           />
 
           <Lang />
@@ -37,5 +58,7 @@ class LangContainer extends React.Component {
 
 const mapProps = ({ lang }) => ({ lang });
 
-const connected = connect(mapProps, { addLang, selectLang })(LangContainer);
+const connected = connect(mapProps, { addLang, selectLang, removeLang })(
+  LangContainer
+);
 export default withRouter(connected);

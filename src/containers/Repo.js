@@ -26,7 +26,17 @@ class Repo extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { repo: { page }, match: { params: { id } } } = this.props;
+    const {
+      history,
+      lang: { selected, loading, data },
+      match: { params: { id } }
+    } = this.props;
+
+    if (!loading && (!selected || !data.find(e => selected === e)))
+      history.replace({ pathname: "/" });
+
+    if (selected !== id && data.find(e => e === id)) this.props.selectLang(id);
+
     if (prevProps.match.params.id !== id) this.props.fetchRepo(id, 1);
   }
 
@@ -37,7 +47,7 @@ class Repo extends React.Component {
   renderItem = ({ key, ...e }) => <Card key={key} {...e} />;
 
   render() {
-    const { match, repo: { total, loading, data = [] } } = this.props;
+    const { repo: { total, loading, data = [] } } = this.props;
     const list = List(data);
 
     return (
