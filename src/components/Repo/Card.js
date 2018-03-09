@@ -7,7 +7,7 @@ export default class Card extends React.PureComponent {
   state = { showButton: false };
   toggleButton = () => this.setState({ showButton: !this.state.showButton });
   render() {
-    const { item, style } = this.props;
+    const { item, style, addFavourite } = this.props;
     if (!item) return null;
 
     return (
@@ -23,7 +23,11 @@ export default class Card extends React.PureComponent {
           </a>
 
           {this.state.showButton && (
-            <Button.Icon className="repo-card-favorite" iconName="FaHeart" />
+            <Button.Icon
+              onClick={_ => addFavourite(item)}
+              className="repo-card-favorite"
+              iconName="FaHeart"
+            />
           )}
         </div>
         <div className="repo-card-description">

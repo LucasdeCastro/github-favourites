@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { fetchRepo } from "../actions/repoActions";
 import { selectLang } from "../actions/langActions";
-
+import { addFavourite } from "../actions/favouriteActions";
 import ListView from "../components/ListView";
 import Card from "../components/Repo/Card";
 
@@ -44,7 +44,9 @@ class Repo extends React.Component {
     this.props.fetchRepo(this.props.match.params.id, this.props.repo.page);
   };
 
-  renderItem = ({ key, ...e }) => <Card key={key} {...e} />;
+  renderItem = ({ key, ...e }) => (
+    <Card addFavourite={this.props.addFavourite} key={key} {...e} />
+  );
 
   render() {
     const { repo: { total, loading, data = [] } } = this.props;
@@ -69,5 +71,7 @@ class Repo extends React.Component {
 }
 
 const mapProps = ({ lang, repo }) => ({ lang, repo });
-const connected = connect(mapProps, { selectLang, fetchRepo })(Repo);
+const connected = connect(mapProps, { selectLang, fetchRepo, addFavourite })(
+  Repo
+);
 export default withRouter(connected);
