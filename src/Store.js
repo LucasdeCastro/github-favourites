@@ -2,16 +2,24 @@ import thunk from "redux-thunk";
 import reduces from "./reducers";
 import { createStore, applyMiddleware } from "redux";
 import customMiddleware from "./utils/customMiddleware";
-import { SET_LANG, REMOVE_LANG } from "./utils/actions";
+import {
+  SET_LANG,
+  SELECT_LANG,
+  REMOVE_LANG,
+  ADD_FAVOURITE,
+  REMOVE_FAVOURITE
+} from "./utils/actions";
+import { FAVOURITE } from "./utils/constants";
 
 const middleware = customMiddleware([
   {
-    action: SET_LANG,
-    reducer: "lang"
+    actions: [SET_LANG, REMOVE_LANG, SELECT_LANG],
+    reducer: "lang",
+    local: true
   },
   {
-    action: REMOVE_LANG,
-    reducer: "lang"
+    actions: [ADD_FAVOURITE, REMOVE_FAVOURITE],
+    reducer: FAVOURITE
   }
 ]);
 
