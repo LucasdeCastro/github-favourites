@@ -9,7 +9,7 @@ const initialState = {
   page: 1,
   data: [],
   total: 0,
-  loading: false
+  loading: true
 };
 
 export default function langReducer(state = initialState, { type, payload }) {

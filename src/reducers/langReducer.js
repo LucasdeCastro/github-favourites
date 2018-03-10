@@ -1,15 +1,16 @@
+import { FAVOURITE } from "../utils/constants";
+import { LOAD_FROM_LOCALSTORE } from "../utils/customMiddleware";
 import { SET_LANG, SELECT_LANG, REMOVE_LANG } from "../utils/actions";
-import { LOAD_FROM_FIREBASE } from "../utils/customMiddleware";
 const initialState = {
-  data: [],
+  data: [FAVOURITE],
   loading: true,
   selected: null
 };
 
 export default function langReducer(state = initialState, { type, payload }) {
   switch (type) {
-    case LOAD_FROM_FIREBASE:
-      return Object.assign({}, state, { ...payload, loading: false });
+    case LOAD_FROM_LOCALSTORE:
+      return Object.assign({}, state, { ...payload.lang, loading: false });
     case REMOVE_LANG:
       return Object.assign({}, state, {
         data: state.data.filter(e => e !== payload),

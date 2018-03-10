@@ -6,16 +6,23 @@ import Button from "../Button";
 export default class Card extends React.PureComponent {
   state = { showButton: false };
   toggleButton = () => this.setState({ showButton: !this.state.showButton });
+
+  clickButton = _ => {
+    const { item, addFavourite, removeFavourite, isFavourite } = this.props;
+    if (isFavourite) removeFavourite(item);
+    else addFavourite(item);
+  };
+
   render() {
-    const { item, style, addFavourite } = this.props;
+    const { item, style, isFavourite } = this.props;
     if (!item) return null;
 
     return (
       <div
-        onMouseEnter={this.toggleButton}
-        onMouseLeave={this.toggleButton}
         style={style}
         className="repo-card-container"
+        onMouseEnter={this.toggleButton}
+        onMouseLeave={this.toggleButton}
       >
         <div className="repo-card-title">
           <a href={item.html_url} className="repo-card-link">
@@ -24,9 +31,9 @@ export default class Card extends React.PureComponent {
 
           {this.state.showButton && (
             <Button.Icon
-              onClick={_ => addFavourite(item)}
+              onClick={this.clickButton}
               className="repo-card-favorite"
-              iconName="FaHeart"
+              iconName={isFavourite ? "FaMinus" : "FaHeart"}
             />
           )}
         </div>

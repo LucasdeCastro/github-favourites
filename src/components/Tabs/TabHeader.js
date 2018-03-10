@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Button from "../Button";
 import "../../styles/tabs.css";
+import { FAVOURITE } from "../../utils/constants";
 
 export class TabItem extends React.Component {
   state = { showButton: false };
@@ -11,7 +12,8 @@ export class TabItem extends React.Component {
   remove = _ => this.props.langRemove(this.props.title);
 
   render() {
-    const { title, onClick, selected } = this.props;
+    const { title, onClick, selected, langRemove } = this.props;
+    const isFavourite = FAVOURITE !== title;
     return (
       <li
         onMouseEnter={this.showButton}
@@ -22,7 +24,7 @@ export class TabItem extends React.Component {
           {title}
         </Link>
 
-        {this.state.showButton ? (
+        {this.state.showButton && isFavourite ? (
           <Button.Icon
             onClick={this.remove}
             className="tab-item-close"

@@ -25,11 +25,16 @@ class LangContainer extends React.Component {
 
   redirectToRepo = () => {
     const {
-      lang: { selected },
+      lang: { selected, data },
       history: { location: { pathname } }
     } = this.props;
 
-    if (selected && selected.length > 0 && pathname === "/")
+    if (
+      selected &&
+      selected.length > 0 &&
+      pathname === "/" &&
+      data.find(e => e === selected)
+    )
       this.props.history.push(`/repo/${selected}`);
   };
 
