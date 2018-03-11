@@ -1,6 +1,6 @@
 .tab-container {
   flex: 1;
-  margin: 25px;
+  margin: 15px 25px;
   display: flex;
   border-radius: 3px;
   flex-direction: column;

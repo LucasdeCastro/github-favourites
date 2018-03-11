@@ -8,7 +8,6 @@ export class TabItem extends React.Component {
   state = { showButton: false };
   showButton = _ => this.setState({ showButton: true });
   hideButton = _ => this.setState({ showButton: false });
-
   remove = _ => this.props.langRemove(this.props.title);
 
   render() {

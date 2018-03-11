@@ -10,8 +10,10 @@ const initialState = {
 export default function langReducer(state = initialState, { type, payload }) {
   switch (type) {
     case LOAD_FROM_LOCALSTORE:
-      return Object.assign({}, state, { ...payload.lang, loading: false });
+      const { lang = {} } = payload;
+      return Object.assign({}, state, { ...lang, loading: false });
     case REMOVE_LANG:
+      if (payload === FAVOURITE) return state;
       return Object.assign({}, state, {
         data: state.data.filter(e => e !== payload),
         selected: state.selected === payload ? null : state.selected
@@ -23,6 +25,7 @@ export default function langReducer(state = initialState, { type, payload }) {
         selected: state.selected === null ? payload[0] : state.selected
       });
     case SELECT_LANG:
+      if (state.data.indexOf(payload) < 0) return state;
       return Object.assign({}, state, {
         selected: payload
       });

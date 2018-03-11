@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[TabItem - Selected] try render component 1`] = `
+<li
+  className="tab-item tab-item-seleted"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <a
+    href="/repo/favourite"
+    onClick={[Function]}
+  >
+    favourite
+  </a>
+  <div
+    className="tab-item-close"
+  />
+</li>
+`;
+
+exports[`[TabItem - Selected] try render component 2`] = `
+<li
+  className="tab-item tab-item-seleted"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <a
+    href="/repo/favourite"
+    onClick={[Function]}
+  >
+    favourite
+  </a>
+  <div
+    className="tab-item-close"
+  />
+</li>
+`;
+
+exports[`[TabItem - Selected] try render component 3`] = `
+<li
+  className="tab-item tab-item-seleted"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <a
+    href="/repo/favourite"
+    onClick={[Function]}
+  >
+    favourite
+  </a>
+  <div
+    className="tab-item-close"
+  />
+</li>
+`;
+
+exports[`[TabItem] try render component 1`] = `
+<li
+  className="tab-item"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <a
+    href="/repo/favourite"
+    onClick={[Function]}
+  >
+    favourite
+  </a>
+  <div
+    className="tab-item-close"
+  />
+</li>
+`;
+
+exports[`[TabItem] try render component 2`] = `
+<li
+  className="tab-item"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <a
+    href="/repo/favourite"
+    onClick={[Function]}
+  >
+    favourite
+  </a>
+  <div
+    className="tab-item-close"
+  />
+</li>
+`;
+
+exports[`[TabItem] try render component 3`] = `
+<li
+  className="tab-item"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <a
+    href="/repo/favourite"
+    onClick={[Function]}
+  >
+    favourite
+  </a>
+  <div
+    className="tab-item-close"
+  />
+</li>
+`;
