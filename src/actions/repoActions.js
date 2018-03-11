@@ -2,7 +2,8 @@ import {
   FETCH_REPO_DATA,
   FETCH_REPO_DATA_FAIL,
   FETCH_REPO_PAGE_SUCCESS,
-  FETCH_REPO_DATA_SUCCESS
+  FETCH_REPO_DATA_SUCCESS,
+  SET_ERROR
 } from "../utils/actions";
 import { BASE_URL } from "../utils/constants";
 
@@ -18,9 +19,10 @@ export function fetchRepo(lang, page) {
         dispatch({ type, payload: { ...response, page } });
       })
       .catch(error => {
+        dispatch({ type: FETCH_REPO_DATA_FAIL });
         dispatch({
-          type: FETCH_REPO_DATA_FAIL,
-          payload: { error: "Request fail" }
+          type: SET_ERROR,
+          payload: "Falha na requisição " + error.getMessage()
         });
       });
   };

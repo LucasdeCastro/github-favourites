@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Button from "../components/Button";
 import { withRouter } from "react-router-dom";
 import { addLang } from "../actions/langActions";
+import { setError } from "../actions/errorActions";
 
 import "../styles/lang.css";
 
@@ -18,8 +19,9 @@ class LangContainer extends React.Component {
     const value = this.input.value.trim();
     const { data, selected } = this.props.lang;
 
-    if (data.find(e => e === value)) console.log("Essa linguagem já foi salva");
-    else if (value !== "") {
+    if (data.find(e => e.toLowerCase() === value.toLowerCase())) {
+      this.props.setError("Essa linguagem já foi salva");
+    } else if (value !== "") {
       this.props.addLang(this.input.value);
       this.input.value = "";
       this.setState({ show: false });
@@ -73,6 +75,6 @@ class LangContainer extends React.Component {
 
 const mapProps = ({ lang }) => ({ lang });
 
-const connected = connect(mapProps, { addLang })(LangContainer);
+const connected = connect(mapProps, { addLang, setError })(LangContainer);
 
 export default withRouter(connected);

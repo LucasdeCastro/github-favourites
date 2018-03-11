@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import Tabs from "./containers/Tabs";
+import Error from "./containers/Error";
 import "./styles/main.css";
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="full-flex">
+            <Error />
             <Tabs />
           </div>
         </Router>
