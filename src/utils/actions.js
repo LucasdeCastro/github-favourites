@@ -9,3 +9,6 @@ export const FETCH_REPO_PAGE_SUCCESS = "FETCH_REPO_PAGE_SUCCESS";
 
 export const ADD_FAVOURITE = "ADD_FAVOURITE";
 export const REMOVE_FAVOURITE = "REMOVE_FAVOURITE";
+
+export const SET_ERROR = "SET_ERROR";
+export const CLEAR_ERROR = "CLEAR_ERROR";
