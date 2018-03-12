@@ -21,7 +21,8 @@
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
-    "predeploy": "CI=true react-scripts test --env=jsdom && yarn build",
+    "precommit": "lint-staged && set CI=true&&npm test",
+    "predeploy": "set CI=true react-scripts test --env=jsdom && yarn build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",

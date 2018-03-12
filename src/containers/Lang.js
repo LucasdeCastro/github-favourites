@@ -17,11 +17,12 @@ class LangContainer extends React.Component {
 
   addLang = () => {
     const reg = /[^\w\s]/gi;
-    const value = this.input.value.trim();
+    const value = this.input.value.trim().toLowerCase();
     const { data, selected } = this.props.lang;
 
-    if (reg.test(value)) this.props.setError("Caracteres inválidos.");
-    else if (data.find(e => e.toLowerCase() === value.toLowerCase())) {
+    if (reg.test(value)) {
+      this.props.setError("Caracteres inválidos.");
+    } else if (data.find(e => e.toLowerCase() === value)) {
       this.props.setError("Essa linguagem já foi adicionada.");
     } else if (value !== "") {
       this.props.addLang(value);

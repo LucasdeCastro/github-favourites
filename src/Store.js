@@ -9,12 +9,12 @@ import {
   ADD_FAVOURITE,
   REMOVE_FAVOURITE
 } from "./utils/actions";
-import { FAVOURITE } from "./utils/constants";
+import { FAVOURITE, LANG } from "./utils/constants";
 
 const middleware = customMiddleware([
   {
     actions: [SET_LANG, REMOVE_LANG, SELECT_LANG],
-    reducer: "lang",
+    reducer: LANG,
     local: true
   },
   {
