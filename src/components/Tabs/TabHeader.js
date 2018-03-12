@@ -11,7 +11,7 @@ export class TabItem extends React.Component {
   remove = _ => this.props.langRemove(this.props.title);
 
   render() {
-    const { title, onClick, selected, langRemove } = this.props;
+    const { title, onClick, selected } = this.props;
     const isFavourite = FAVOURITE !== title;
     return (
       <li
