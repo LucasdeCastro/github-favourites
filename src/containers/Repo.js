@@ -5,20 +5,18 @@ import { withRouter } from "react-router-dom";
 import { fetchRepo } from "../actions/repoActions";
 import { selectLang } from "../actions/langActions";
 import { addFavourite, removeFavourite } from "../actions/favouriteActions";
-import ListView from "../components/ListView";
+
 import Card from "../components/Repo/Card";
+import ListView from "../components/ListView";
 import { FAVOURITE } from "../utils/constants";
+
+import Loop from "react-icons/lib/md/loop";
 
 class Repo extends React.Component {
   state = { height: 0 };
 
   componentDidMount() {
-    const {
-      history,
-      repo: { page },
-      lang: { selected, data, loading },
-      match: { params: { id } }
-    } = this.props;
+    const { lang: { selected, data }, match: { params: { id } } } = this.props;
 
     const lang = id.toLowerCase();
     const hasOnDataLang = data.indexOf(lang) >= 0;
@@ -81,14 +79,20 @@ class Repo extends React.Component {
 
     const {
       match: { params: { id } },
-      repo: { total, loading, data = [] },
+      repo: { total, loading, data = [], hasError },
       favourite: { data: favouriteData }
     } = this.props;
 
     const list = id === FAVOURITE ? List(favouriteData) : List(data);
 
+    if (hasError) return null;
     if (id !== FAVOURITE && loading && list.size === 0)
-      return <div>Loading...</div>;
+      return (
+        <div className="repo-loading">
+          <Loop />
+          Carregando...
+        </div>
+      );
 
     return (
       <div className="full-flex" ref={this.getRef}>
