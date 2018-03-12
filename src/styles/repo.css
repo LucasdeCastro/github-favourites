@@ -83,6 +83,16 @@
   animation: spin 500ms linear infinite;
 }
 
+.repo-empty-list {
+  padding: 15px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.repo-empty-list strong {
+  text-transform: uppercase;
+}
+
 @-moz-keyframes spin {
   100% {
     -moz-transform: rotate(-360deg);

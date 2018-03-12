@@ -86,13 +86,22 @@ class Repo extends React.Component {
     const list = id === FAVOURITE ? List(favouriteData) : List(data);
 
     if (hasError) return null;
-    if (id !== FAVOURITE && loading && list.size === 0)
+    if (id !== FAVOURITE && loading && list.size === 0) {
       return (
         <div className="repo-loading">
           <Loop />
           Carregando...
         </div>
       );
+    }
+
+    if (list.size === 0) {
+      return (
+        <div className="repo-empty-list">
+          Não foi possível listar os repositórios de <strong>{id}</strong>.
+        </div>
+      );
+    }
 
     return (
       <div className="full-flex" ref={this.getRef}>
