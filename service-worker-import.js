@@ -46,35 +46,32 @@ self.addEventListener("install", function(event) {
 
 // When the webpage goes to fetch files, we intercept that request and serve up the matching files
 // if we have them
-self.addEventListener("fetch", function(event) {
+self.addEventListener("fetch", function(e) {
   if (doCache) {
-    event.respondWith(
-      caches.match(event.request).then(function(response) {
-        if (response) {
-          console.log("return cache");
-          return response;
-        }
+    const gitRepoApi = "https://api.github.com/search/repositories";
+    const gitAvatar = "githubusercontent.com";
+    const url = e.request.url;
 
-        const fetchRequest = event.request.clone();
+    // Check if this is data or app shell request
+    if (url.indexOf(gitRepoApi) > -1 || url.indexOf(gitAvatar) > -1) {
+      e.respondWith(
+        caches.open(CACHE_NAME).then(function(cache) {
+          return cache.match(url).then(function(cached) {
+            if (cached) return cached;
 
-        return fetch(fetchRequest).then(function(response) {
-          if (
-            !response ||
-            response.status !== 200 ||
-            response.type !== "basic"
-          ) {
-            return response;
-          }
-
-          const responseToCache = response.clone();
-
-          caches.open(CACHE_NAME).then(function(cache) {
-            cache.put(event.request, responseToCache);
+            return fetch(e.request).then(function(response) {
+              cache.put(url, response.clone());
+              return response;
+            });
           });
-
-          return response;
-        });
-      })
-    );
+        })
+      );
+    } else {
+      e.respondWith(
+        caches.match(e.request).then(function(response) {
+          return response || fetch(e.request);
+        })
+      );
+    }
   }
 });
