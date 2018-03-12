@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import ListView from "../components/ListView";
+import ListView from "../../components/ListView";
 import { List } from "immutable";
 
 describe("[ListView]", () => {

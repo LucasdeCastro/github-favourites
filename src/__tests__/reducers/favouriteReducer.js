@@ -1,6 +1,6 @@
-import favourite from "../reducers/favouriteReducer";
-import { REMOVE_FAVOURITE, ADD_FAVOURITE } from "../utils/actions";
-import { LOAD_FROM_FIREBASE } from "../utils/customMiddleware";
+import favourite from "../../reducers/favouriteReducer";
+import { REMOVE_FAVOURITE, ADD_FAVOURITE } from "../../utils/actions";
+import { LOAD_FROM_FIREBASE } from "../../utils/customMiddleware";
 
 describe("[favouriteReducer]", () => {
   test("try start reducer without match action", () => {

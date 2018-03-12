@@ -3,8 +3,8 @@ import {
   FETCH_REPO_DATA_SUCCESS,
   FETCH_REPO_PAGE_SUCCESS,
   FETCH_REPO_DATA
-} from "../utils/actions";
-import repo from "../reducers/repoReducer";
+} from "../../utils/actions";
+import repo from "../../reducers/repoReducer";
 
 describe("[repoReducer]", () => {
   test("try FETCH_REPO_DATA", () => {

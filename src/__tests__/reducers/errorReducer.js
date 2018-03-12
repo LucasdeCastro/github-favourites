@@ -1,5 +1,5 @@
-import { CLEAR_ERROR, SET_ERROR } from "../utils/actions";
-import error from "../reducers/errorReducer";
+import { CLEAR_ERROR, SET_ERROR } from "../../utils/actions";
+import error from "../../reducers/errorReducer";
 
 describe("[errorReducer]", () => {
   test("try add a error", () => {

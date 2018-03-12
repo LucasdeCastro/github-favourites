@@ -1,7 +1,7 @@
-import { FAVOURITE } from "../utils/constants";
-import { LOAD_FROM_LOCALSTORE } from "../utils/customMiddleware";
-import { SET_LANG, SELECT_LANG, REMOVE_LANG } from "../utils/actions";
-import langReducer from "../reducers/langReducer";
+import { FAVOURITE } from "../../utils/constants";
+import { LOAD_FROM_LOCALSTORE } from "../../utils/customMiddleware";
+import { SET_LANG, SELECT_LANG, REMOVE_LANG } from "../../utils/actions";
+import langReducer from "../../reducers/langReducer";
 
 describe("[langReducer]", () => {
   test("try start reducer without match action", () => {

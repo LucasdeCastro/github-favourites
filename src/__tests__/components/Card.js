@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Card from "../components/Repo/Card";
+import Card from "../../components/Repo/Card";
 
 describe("[CARD]", () => {
   test("try render component", () => {

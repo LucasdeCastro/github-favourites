@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import { StaticRouter } from "react-router";
-import TabHeader, { TabItem } from "../components/Tabs/TabHeader";
+import TabHeader, { TabItem } from "../../components/Tabs/TabHeader";
 
 describe("[TabItem]", () => {
   test("try render component", () => {
