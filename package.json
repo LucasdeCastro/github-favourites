@@ -21,11 +21,11 @@
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
-    "predeploy": "npm run build",
+    "predeploy": "yarn test && yarn build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "CI=true react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
