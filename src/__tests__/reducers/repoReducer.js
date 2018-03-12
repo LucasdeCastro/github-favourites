@@ -12,7 +12,8 @@ describe("[repoReducer]", () => {
       page: 1,
       data: [],
       total: 0,
-      loading: false
+      loading: false,
+      hasError: false
     };
 
     const state = repo(initial, {
@@ -23,7 +24,8 @@ describe("[repoReducer]", () => {
       page: 1,
       data: [],
       total: 0,
-      loading: true
+      loading: true,
+      hasError: false
     });
   });
 
@@ -41,6 +43,7 @@ describe("[repoReducer]", () => {
       page: 2,
       total: 1,
       loading: false,
+      hasError: false,
       data: [{ id: 1, name: "my repo" }]
     });
   });
@@ -50,6 +53,7 @@ describe("[repoReducer]", () => {
       page: 2,
       total: 2,
       loading: false,
+      hasError: false,
       data: [{ id: 1, name: "my repo" }]
     };
 
@@ -66,6 +70,7 @@ describe("[repoReducer]", () => {
       page: 3,
       total: 2,
       loading: false,
+      hasError: false,
       data: [{ id: 1, name: "my repo" }, { id: 2, name: "my repo 2" }]
     });
   });
@@ -75,11 +80,12 @@ describe("[repoReducer]", () => {
       type: FETCH_REPO_DATA_FAIL
     });
 
-    expect(state, {
+    expect(state).toEqual({
       page: 1,
       data: [],
       total: 0,
-      loading: false
+      loading: false,
+      hasError: true
     });
   });
 });
