@@ -28,4 +28,13 @@ describe("[langActions]", () => {
 
     removeLang(lang)(dispatch);
   });
+
+  test("try add lang with invalid characters", () => {
+    const lang = "+@#=$-!%()";
+    const dispatch = data => {
+      expect(data).toEqual({ type: SET_LANG, payload: [""] });
+    };
+
+    addLang(lang)(dispatch);
+  });
 });

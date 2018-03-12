@@ -2,7 +2,7 @@ import { SET_LANG, SELECT_LANG, REMOVE_LANG } from "../utils/actions";
 
 export function addLang(lang) {
   return dispatch => {
-    lang = lang.toLowerCase();
+    lang = lang.toLowerCase().replace(/[^\w\s]/gi, "");
     dispatch({ type: SET_LANG, payload: [lang] });
   };
 }
