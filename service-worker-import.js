@@ -69,7 +69,18 @@ self.addEventListener("fetch", function(e) {
     } else {
       e.respondWith(
         caches.match(e.request).then(function(response) {
-          return response || fetch(e.request);
+          if (response) return response;
+
+          return fetch(e.request).then(function(response) {
+            if (response.ok) {
+              return caches.open(CACHE_NAME).then(function(cache) {
+                cache.put(e.request.url, response.clone());
+                return response;
+              });
+            } else {
+              return response;
+            }
+          });
         })
       );
     }
